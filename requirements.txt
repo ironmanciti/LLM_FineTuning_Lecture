@@ -3,27 +3,28 @@
 # 버전을 고정하는 이유 (§5 공통 조치)
 #   - peft: target_modules="all-linear" 자동 추론 동작이 버전마다 다르다
 #   - bitsandbytes: T4(Turing)의 4bit 커널 동작이 버전마다 다르다
-#   - trl: SFTTrainer의 인자명이 0.9 → 0.11 → 0.12에서 여러 번 바뀌었다
+#   - trl: SFTTrainer 인터페이스가 여러 번 바뀌었다 (0.13에서 SFTConfig 정착,
+#     0.20대에서 max_seq_length -> max_length 개명, DataCollatorForCompletionOnlyLM 제거)
 #
 # 강사: 개강 2주 전에 아래 조합으로 T4에서 1회 완주 검증할 것 (§7-2)
 
-torch==2.4.1
-transformers==4.44.2
-tokenizers==0.19.1
-datasets==2.21.0
-accelerate==0.34.2
-peft==0.12.0
-trl==0.9.6
-bitsandbytes==0.43.3
+torch==2.8.0
+transformers==4.57.1
+tokenizers==0.22.0
+datasets==4.0.0
+accelerate==1.10.1
+peft==0.17.1
+trl==0.23.0
+bitsandbytes==0.47.0
 sentencepiece==0.2.0
-tiktoken==0.7.0
-protobuf==4.25.4
+tiktoken==0.11.0
+protobuf==5.29.3
 
-# 평가·시각화
-scikit-learn==1.5.1
-matplotlib==3.9.2
-pandas==2.2.2
-numpy==1.26.4
+# 평가·시각화 (numpy 2.x 기반 — Colab 기본 환경과 충돌하지 않는 조합)
+scikit-learn==1.7.1
+matplotlib==3.10.3
+pandas==2.3.1
+numpy==2.2.6
 
 # 한국어 형태소 (010 실습. JDK 필요)
 konlpy==0.6.0
@@ -33,6 +34,8 @@ ipywidgets==8.1.5
 
 # ------------------------------------------------------------------
 # Colab에서는 torch가 이미 설치되어 있으므로 torch 줄을 제외하고 설치한다.
-#   !pip install -q transformers==4.44.2 datasets==2.21.0 accelerate==0.34.2 \
-#       peft==0.12.0 trl==0.9.6 bitsandbytes==0.43.3 tiktoken==0.7.0
+#   !pip install -q transformers==4.57.1 datasets==4.0.0 accelerate==1.10.1 \
+#       peft==0.17.1 trl==0.23.0 bitsandbytes==0.47.0 tiktoken==0.11.0
 # 설치 후 런타임 재시작이 필요할 수 있다.
+# Colab에 미리 설치된 무관한 패키지(gradio, jax 등)의 pip 의존성 경고가
+# 일부 남을 수 있으나, 이 과정에서 사용하지 않는 패키지이므로 무시해도 된다.
