@@ -1,0 +1,14 @@
+# 실습 산출물 — 각자 로컬에 쌓인다
+artifacts/*
+!artifacts/reference/
+!artifacts/reference/.gitkeep
+
+# 학습 체크포인트
+ckpt/
+outputs/
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+.env
